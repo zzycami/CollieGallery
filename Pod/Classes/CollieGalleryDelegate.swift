@@ -14,4 +14,6 @@ import UIKit
     /// Called when the gallery index changes
     @objc optional func gallery(_ gallery: CollieGallery, indexChangedTo index: Int)
     
+    @objc optional func galleryDidDismiss(_ gallery: CollieGallery)
+    
 }

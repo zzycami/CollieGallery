@@ -58,6 +58,7 @@ UIViewControllerTransitioningDelegate  {
             case .began:
                 if enableInteractiveTransition && !targetViewController.displayedView.isZoomed {
                     interactive = true
+                    targetViewController.delegate?.galleryDidDismiss?(targetViewController)
                     targetViewController.dismiss(animated: true, completion: nil)
                 }
                 break
