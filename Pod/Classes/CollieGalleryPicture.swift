@@ -22,19 +22,57 @@
 //  THE SOFTWARE.
 
 import UIKit
+import Kingfisher
 
 /// Class used to represent a picture in the gallery
 open class CollieGalleryPicture: NSObject {
     
     // MARK: - Internal properties
     internal var image: UIImage!
+    internal var largeImage: UIImage!
     internal var url: String!
+    internal var largeUrl: String!
     internal var placeholder: UIImage?
     internal var title: String?
     internal var caption: String?
-    
+    public var header:[String:String] = [String:String]()
     
     // MARK: - Initializers
+    
+    /// Initializer that takes an image object and an big image object
+    ///
+    /// - Parameters:
+    ///   - image: The image
+    ///   - largeImage: The big version of the image
+    ///   - title: An optional title to the image
+    ///   - caption: An optional caption to describe the image
+    public convenience init(image: UIImage, largeImage:UIImage? = nil, title: String? = nil, caption: String? = nil) {
+        self.init()
+        self.image = image
+        self.title = title
+        self.caption = caption
+        self.largeImage = largeImage
+    }
+    
+    
+    /// Initializer that takes a string url of a remote image
+    ///
+    /// - Parameters:
+    ///   - url: The remote url
+    ///   - largeUrl: The big version url of the image
+    ///   - placeholder: An optional placeholder image
+    ///   - title: An optional title to the image
+    ///   - caption: An optional caption to describe the image
+    public convenience init(url: String, largeUrl:String? = nil, placeholder: UIImage? = nil, title: String? = nil, caption: String? = nil) {
+        self.init()
+        self.url = url
+        self.largeUrl = largeUrl
+        self.placeholder = placeholder
+        self.title = title
+        self.caption = caption
+    }
+    
+    
     
     /**
      
@@ -70,5 +108,15 @@ open class CollieGalleryPicture: NSObject {
         self.placeholder = placeholder
         self.title = title
         self.caption = caption
+    }
+}
+
+extension CollieGalleryPicture:ImageDownloadRequestModifier {
+    public func modified(for request: URLRequest) -> URLRequest? {
+        var updateRequest = request
+        for (field, value) in self.header {
+            updateRequest.setValue(value, forHTTPHeaderField: field)
+        }
+        return updateRequest
     }
 }

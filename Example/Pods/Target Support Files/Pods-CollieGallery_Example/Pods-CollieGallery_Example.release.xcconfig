@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/CollieGallery-iOS10.0"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/CollieGallery-iOS8.0" "$PODS_CONFIGURATION_BUILD_DIR/FontAwesome.swift-iOS8.0" "$PODS_CONFIGURATION_BUILD_DIR/Kingfisher-iOS8.0"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/CollieGallery-iOS10.0/CollieGallery.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "CollieGallery"
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/CollieGallery-iOS8.0/CollieGallery.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/FontAwesome.swift-iOS8.0/FontAwesome_swift.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Kingfisher-iOS8.0/Kingfisher.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "CollieGallery" -framework "FontAwesome_swift" -framework "Kingfisher"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

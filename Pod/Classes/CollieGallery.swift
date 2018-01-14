@@ -22,6 +22,7 @@
 //  THE SOFTWARE.
 
 import UIKit
+import FontAwesome_swift
 
 /// Class used to display the gallery
 open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryViewDelegate {
@@ -74,6 +75,9 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     
     /// The action button
     open var actionButton: UIButton?
+    
+    /// The open big image button
+    open var largeImageButton: UIButton?
     
     /// The view used to show the progress
     open var progressTrackView: UIView?
@@ -196,6 +200,10 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
             setupActionButton()
         }
         
+        if options.enableLargeImage {
+            setupLargeImageButton()
+        }
+        
         setupCaptionView()
 
         if options.showProgress {
@@ -314,6 +322,30 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         view.addSubview(actionButton)
     }
     
+    fileprivate func setupLargeImageButton() {
+        if let largeImageButton = self.largeImageButton {
+            largeImageButton.removeFromSuperview()
+        }
+        
+        let avaiableSize = getInitialAvaiableSize()
+        let largeImageFrame = getLargeImageButtonFrame(avaiableSize)
+        let largeImageButton = UIButton(frame: largeImageFrame)
+//        largeImageButton.setTitle(NSLocalizedString("Load large Image", comment: ""), for: UIControlState.normal)
+        largeImageButton.backgroundColor = UIColor.white
+        largeImageButton.setImage(UIImage.fontAwesomeIcon(name: FontAwesome.arrowCircleDown, textColor: UIColor.black, size: CGSize(width: 24, height: 24)), for: UIControlState.normal)
+        largeImageButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+        largeImageButton.clipsToBounds = true
+        largeImageButton.layer.cornerRadius = 20
+        largeImageButton.addTarget(self, action: #selector(CollieGallery.largeButtonTouched(_:)), for: UIControlEvents.touchUpInside)
+        var shouldBeHidden = false
+        if self.largeImageButton != nil {
+            shouldBeHidden = self.actionButton!.isHidden
+        }
+        largeImageButton.isHidden = shouldBeHidden
+        self.largeImageButton = largeImageButton
+        self.view.addSubview(largeImageButton)
+    }
+    
     fileprivate func setupProgressIndicator() {
         let avaiableSize = getInitialAvaiableSize()
         let progressFrame = getProgressViewFrame(avaiableSize)
@@ -369,6 +401,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         
         setupCloseButton()
         setupActionButton()
+        setupLargeImageButton()
         
         updateContentOffset()
         
@@ -456,6 +489,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         closeButton.isHidden = false
         actionButton?.isHidden = false
         progressTrackView?.isHidden = false
+        largeImageButton?.isHidden = false
         captionView.isHidden = captionView.titleLabel.text == nil && captionView.captionLabel.text == nil
         
         UIView.animate(withDuration: 0.2, delay: 0.0,
@@ -465,6 +499,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
                                                     self?.actionButton?.alpha = 1.0
                                                     self?.progressTrackView?.alpha = 1.0
                                                     self?.captionView.alpha = 1.0
+                                                    self?.largeImageButton?.alpha = 1.0
                                    }, completion: nil)
     }
     
@@ -476,12 +511,14 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
                                         self?.actionButton?.alpha = 0.0
                                         self?.progressTrackView?.alpha = 0.0
                                         self?.captionView.alpha = 0.0
+                                        self?.largeImageButton?.alpha = 0.0
                                    },
                                    completion: { [weak self] _ in
                                         self?.closeButton.isHidden = true
                                         self?.actionButton?.isHidden = true
                                         self?.progressTrackView?.isHidden = true
                                         self?.captionView.isHidden = true
+                                        self?.largeImageButton?.isHidden = true
                                    })
     }
     
@@ -498,11 +535,15 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     }
     
     fileprivate func getCloseButtonFrame(_ avaiableSize: CGSize) -> CGRect {
-        return CGRect(x: 0, y: 0, width: 50, height: 50)
+        return CGRect(x: 0, y: 20, width: 50, height: 50)
     }
     
     fileprivate func getActionButtonFrame(_ avaiableSize: CGSize) -> CGRect {
-        return CGRect(x: avaiableSize.width - 50, y: 0, width: 50, height: 50)
+        return CGRect(x: avaiableSize.width - 50, y: 20, width: 50, height: 50)
+    }
+    
+    fileprivate func getLargeImageButtonFrame(_ avaiableSize: CGSize) -> CGRect {
+        return CGRect(x: 30, y: avaiableSize.height - 80, width: 40, height: 40)
     }
     
     fileprivate func getCustomButtonFrame(_ avaiableSize: CGSize, forIndex index: Int) -> CGRect {
@@ -554,6 +595,10 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         }
         
         showShareActivity()
+    }
+    
+    @objc internal func largeButtonTouched(_ sender: AnyObject) {
+        self.pictureViews[currentPageIndex].loadLargeImage()
     }
     
     internal func showShareActivity() {

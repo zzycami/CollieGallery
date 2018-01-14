@@ -65,6 +65,9 @@ open class CollieGalleryOptions: NSObject {
     /// Indicates if the user should be able to dismiss the gallery interactively with a pan gesture
     open var enableInteractiveDismiss: Bool = true
     
+    /// have the large image url
+    open var enableLargeImage: Bool = true
+    
     /// Add fire custom block instead of showing default share menu
     open var customOptionsBlock: (() -> Void)?
     

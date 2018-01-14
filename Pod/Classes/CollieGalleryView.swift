@@ -22,6 +22,7 @@
 //  THE SOFTWARE.
 
 import UIKit
+import Kingfisher
 
 internal class CollieGalleryView: UIView, UIScrollViewDelegate {
     
@@ -30,7 +31,7 @@ internal class CollieGalleryView: UIView, UIScrollViewDelegate {
     var picture: CollieGalleryPicture!
     var scrollView: UIScrollView!
     var imageView: UIImageView!
-    var activityIndicator: UIActivityIndicatorView!
+    var activityIndicator: UCZProgressView!
     var isZoomed: Bool {
         get {
             return scrollView.zoomScale > scrollView.minimumZoomScale
@@ -104,12 +105,21 @@ internal class CollieGalleryView: UIView, UIScrollViewDelegate {
     }
     
     fileprivate func setupActivityIndicatorView() {
-        activityIndicator = UIActivityIndicatorView()
-        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0);
-        activityIndicator.center = imageView.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.color = theme.progressIndicatorColor
-
+        activityIndicator = UCZProgressView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
+        activityIndicator.frame = imageView.bounds
+        activityIndicator.showsText = true
+        activityIndicator.indeterminate = true
+        activityIndicator.blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        if #available(iOS 10, *) {
+            activityIndicator.usesVibrancyEffect = false
+        }else {
+            activityIndicator.usesVibrancyEffect = true
+        }
+        activityIndicator.lineWidth = 1
+        activityIndicator.radius = 20
+        activityIndicator.textSize = 12
+        activityIndicator.alpha = 0.9
+        
         addSubview(activityIndicator)
     }
 
@@ -206,37 +216,84 @@ internal class CollieGalleryView: UIView, UIScrollViewDelegate {
     }
     
     func loadImage() {
-        if imageView.image == nil {
-            if let image = picture.image {
-                imageView.image = image
-                updateImageViewSize()
-                
-            } else if let url = picture.url {
-                
-                if let placeholder = picture.placeholder {
-                    imageView.image = placeholder
-                    updateImageViewSize()
+        if self.imageView.image == nil {
+            //If large image exist
+            var image = self.picture.largeImage
+            let imageCache =  KingfisherManager.shared.cache
+            
+            if image == nil {
+                if let url = self.picture.largeUrl {
+                    image = imageCache.retrieveImageInMemoryCache(forKey:url)
+                    if image == nil {
+                        image = imageCache.retrieveImageInDiskCache(forKey:url)
+                    }
                 }
-                
-                activityIndicator.startAnimating()
-                
-                let request: URLRequest = URLRequest(url: URL(string: url)!)
-                let mainQueue = OperationQueue.main
-                NSURLConnection.sendAsynchronousRequest(request,
-                                                        queue: mainQueue,
-                                                        completionHandler:
-                    { [weak self] response, data, error in
-                    if error == nil {
-                        let image = UIImage(data: data!)!
-                        
-                        DispatchQueue.main.async(execute: {
+            }
+            if image != nil {
+                self.imageView.image = image
+                self.updateImageViewSize()
+                self.activityIndicator.removeFromSuperview()
+            }else {
+                if let image = self.picture.image {
+                    self.imageView.image = image
+                    self.updateImageViewSize()
+                    self.activityIndicator.removeFromSuperview()
+                } else if let url = self.picture.url {
+                    if let placeholder = self.picture.placeholder {
+                        self.imageView.image = placeholder
+                        self.updateImageViewSize()
+                    }
+                    
+                    self.imageView.kf.setImage(with: URL(string:url)!, placeholder: self.picture.placeholder, options: [.requestModifier(self.picture)], progressBlock: {[weak self](receivedSize, totalSize)  in
+                        let progress = CGFloat(receivedSize)/CGFloat(totalSize)
+                        self?.activityIndicator.progress = progress
+                    }) {[weak self] (image, error, cacheType, imageURL) in
+                        if image != nil {
                             self?.imageView.image = image
                             self?.updateImageViewSize()
-                            
-                            self?.activityIndicator.stopAnimating()
-                        })
+                            self?.activityIndicator.progress = 1
+                            self?.activityIndicator.progressAnimiationDidStop({
+                                self?.activityIndicator.removeFromSuperview()
+                            })
+                        }
                     }
-                })
+                }
+            }
+        }
+    }
+    
+    func loadLargeImage()  {
+        if let image = self.picture.largeImage {
+            self.imageView.image = image
+            self.updateImageViewSize()
+        } else if let url = self.picture.largeUrl {
+            if let activityIndicator = self.activityIndicator {
+                if !self.subviews.contains(activityIndicator) {
+                    self.addSubview(activityIndicator)
+                }
+            }
+            
+            var placeholderImage:UIImage?
+            let imageCache = KingfisherManager.shared.cache
+            if let placeholderUrl = self.picture.url {
+                placeholderImage = imageCache.retrieveImageInMemoryCache(forKey:placeholderUrl)
+                if placeholderImage == nil {
+                    placeholderImage = imageCache.retrieveImageInDiskCache(forKey:placeholderUrl)
+                }
+            }
+            
+            self.imageView.kf.setImage(with: URL(string:url)!, placeholder: placeholderImage, options: [.requestModifier(self.picture)], progressBlock: {[weak self](receivedSize, totalSize)  in
+                let progress = CGFloat(receivedSize)/CGFloat(totalSize)
+                self?.activityIndicator.progress = progress
+            }) {[weak self] (image, error, cacheType, imageURL) in
+                if image != nil {
+                    self?.imageView.image = image
+                    self?.updateImageViewSize()
+                    self?.activityIndicator.progress = 1
+                    self?.activityIndicator.progressAnimiationDidStop({
+                        self?.activityIndicator.removeFromSuperview()
+                    })
+                }
             }
         }
     }

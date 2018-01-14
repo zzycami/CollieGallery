@@ -297,11 +297,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CollieGallery_Example/Pods-CollieGallery_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CollieGallery-iOS10.0/CollieGallery.framework",
+				"${BUILT_PRODUCTS_DIR}/CollieGallery-iOS8.0/CollieGallery.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift-iOS8.0/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher-iOS8.0/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollieGallery.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -316,14 +320,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CollieGallery_Tests/Pods-CollieGallery_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CollieGallery-iOS8.3/CollieGallery.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift-iOS8.3/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher-iOS8.3/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollieGallery.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

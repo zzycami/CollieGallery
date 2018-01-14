@@ -103,13 +103,13 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CollieGallery-iOS8.3/CollieGallery.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Quick/Quick.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FontAwesome.swift-iOS8.3/FontAwesome_swift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher-iOS8.3/Kingfisher.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CollieGallery-iOS8.3/CollieGallery.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Quick/Quick.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FontAwesome.swift-iOS8.3/FontAwesome_swift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher-iOS8.3/Kingfisher.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

@@ -15,6 +15,8 @@ DESC
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
+  s.dependency  'FontAwesome.swift'
+  s.dependency  'Kingfisher'
 
   s.source_files = 'Pod/Classes/**/*'
   #s.resource_bundles = {
