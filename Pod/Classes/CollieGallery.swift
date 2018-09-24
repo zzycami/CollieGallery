@@ -332,7 +332,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         let largeImageButton = UIButton(frame: largeImageFrame)
 //        largeImageButton.setTitle(NSLocalizedString("Load large Image", comment: ""), for: UIControlState.normal)
         largeImageButton.backgroundColor = UIColor.white
-        largeImageButton.setImage(UIImage.fontAwesomeIcon(name: FontAwesome.arrowCircleDown, textColor: UIColor.black, size: CGSize(width: 24, height: 24)), for: UIControlState.normal)
+        largeImageButton.setImage(UIImage.fontAwesomeIcon(name: FontAwesome.arrowCircleDown, style: FontAwesomeStyle.regular, textColor: UIColor.black, size: CGSize(width: 24, height: 24)), for: UIControlState.normal)
         largeImageButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         largeImageButton.clipsToBounds = true
         largeImageButton.layer.cornerRadius = 20
