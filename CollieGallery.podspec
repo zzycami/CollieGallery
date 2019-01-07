@@ -13,7 +13,7 @@ DESC
   s.author           = { "Guilherme Munhoz" => "g.araujo.munhoz@gmail.com" }
   s.source           = { :git => "https://github.com/zzycami/CollieGallery.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '10.0'
   s.requires_arc = true
   s.dependency  'FontAwesome.swift'
   s.dependency  'Kingfisher'
