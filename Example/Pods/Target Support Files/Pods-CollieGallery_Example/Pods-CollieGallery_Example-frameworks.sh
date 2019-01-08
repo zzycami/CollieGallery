@@ -143,14 +143,14 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/CollieGallery-iOS8.0/CollieGallery.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FontAwesome.swift-iOS8.0/FontAwesome_swift.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher-iOS8.0/Kingfisher.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CollieGallery/CollieGallery.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/CollieGallery-iOS8.0/CollieGallery.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FontAwesome.swift-iOS8.0/FontAwesome_swift.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher-iOS8.0/Kingfisher.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CollieGallery/CollieGallery.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

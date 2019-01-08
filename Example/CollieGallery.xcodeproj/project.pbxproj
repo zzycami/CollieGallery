@@ -295,9 +295,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CollieGallery_Example/Pods-CollieGallery_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CollieGallery-iOS8.0/CollieGallery.framework",
-				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift-iOS8.0/FontAwesome_swift.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher-iOS8.0/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/CollieGallery/CollieGallery.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -317,9 +317,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CollieGallery_Tests/Pods-CollieGallery_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CollieGallery-iOS8.3/CollieGallery.framework",
-				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift-iOS8.3/FontAwesome_swift.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher-iOS8.3/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/CollieGallery/CollieGallery.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
