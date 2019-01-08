@@ -332,11 +332,11 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         let largeImageButton = UIButton(frame: largeImageFrame)
 //        largeImageButton.setTitle(NSLocalizedString("Load large Image", comment: ""), for: UIControlState.normal)
         largeImageButton.backgroundColor = UIColor.white
-        largeImageButton.setImage(UIImage.fontAwesomeIcon(name: FontAwesome.arrowCircleDown, style: FontAwesomeStyle.solid, textColor: UIColor.black, size: CGSize(width: 24, height: 24)), for: UIControlState.normal)
-        largeImageButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+        largeImageButton.setImage(UIImage.fontAwesomeIcon(name: FontAwesome.arrowCircleDown, style: FontAwesomeStyle.solid, textColor: UIColor.black, size: CGSize(width: 24, height: 24)), for: UIControl.State.normal)
+        largeImageButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         largeImageButton.clipsToBounds = true
         largeImageButton.layer.cornerRadius = 20
-        largeImageButton.addTarget(self, action: #selector(CollieGallery.largeButtonTouched(_:)), for: UIControlEvents.touchUpInside)
+        largeImageButton.addTarget(self, action: #selector(CollieGallery.largeButtonTouched(_:)), for: UIControl.Event.touchUpInside)
         var shouldBeHidden = false
         if self.largeImageButton != nil {
             shouldBeHidden = self.actionButton!.isHidden

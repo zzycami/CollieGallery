@@ -89,7 +89,7 @@ internal class CollieGalleryView: UIView, UIScrollViewDelegate {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = options.maximumZoomScale
-        scrollView.decelerationRate = UIScrollView.DecelerationRate.fast
+//        scrollView.decelerationRate = UIScrollView.DecelerationRate.fast
         scrollView.backgroundColor = UIColor.clear
         isUserInteractionEnabled = options.enableZoom
         
@@ -109,7 +109,7 @@ internal class CollieGalleryView: UIView, UIScrollViewDelegate {
         activityIndicator.frame = imageView.bounds
         activityIndicator.showsText = true
         activityIndicator.indeterminate = true
-        activityIndicator.blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        activityIndicator.blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         if #available(iOS 10, *) {
             activityIndicator.usesVibrancyEffect = false
         }else {
