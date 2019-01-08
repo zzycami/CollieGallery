@@ -19,7 +19,7 @@
     "tag": "0.6.1"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "10.0"
   },
   "requires_arc": true,
   "dependencies": {
