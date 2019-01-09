@@ -593,8 +593,11 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         showShareActivity()
     }
     
-    @objc internal func largeButtonTouched(_ sender: AnyObject) {
-        self.pictureViews[currentPageIndex].loadLargeImage()
+    @objc internal func largeButtonTouched(_ sender: UIProgressButton) {
+        //self.pictureViews[currentPageIndex].loadLargeImage()
+        let picture = self.pictures[currentPageIndex]
+        let galleryView = self.pictureViews[currentPageIndex]
+        self.delegate?.gallery?(self, didStartDownloadPicture: picture, pictureViews: galleryView, downloadButton: sender)
     }
     
     internal func showShareActivity() {

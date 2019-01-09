@@ -28,13 +28,13 @@ import Kingfisher
 open class CollieGalleryPicture: NSObject {
     
     // MARK: - Internal properties
-    internal var image: UIImage!
-    internal var largeImage: UIImage!
-    internal var url: String!
-    internal var largeUrl: String!
-    internal var placeholder: UIImage?
-    internal var title: String?
-    internal var caption: String?
+    public var image: UIImage!
+    public var largeImage: UIImage!
+    public var url: String!
+    public var largeUrl: String!
+    public var placeholder: UIImage?
+    public var title: String?
+    public var caption: String?
     public var header:[String:String] = [String:String]()
     
     // MARK: - Initializers
