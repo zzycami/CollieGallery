@@ -89,7 +89,7 @@ internal class CollieGalleryView: UIView, UIScrollViewDelegate {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = options.maximumZoomScale
-//        scrollView.decelerationRate = UIScrollView.DecelerationRate.fast
+        scrollView.decelerationRate = UIScrollView.DecelerationRate.fast
         scrollView.backgroundColor = UIColor.clear
         isUserInteractionEnabled = options.enableZoom
         

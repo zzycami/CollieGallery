@@ -92,6 +92,7 @@
 		DD6D01785F974D6A7C78AC28BF06A3AB /* CacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2060DAF5EAD4E68E0CF3ECCF7B5A52 /* CacheSerializer.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DD8F9CDD10C1BF480B158340124892CE /* Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E690BB39CFDFF5D7A7A48C1F870C51E1 /* Kingfisher.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E46A2F43BB026FBC3A28D23183012434 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 656A958761887A636F50AE404CC9ECE7 /* Font Awesome 5 Free-Solid-900.otf */; };
+		E94ADAB921E4EB9D009B1A2C /* UIProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94ADAB821E4EB9D009B1A2C /* UIProgressButton.swift */; };
 		EA3B2676FC2E43A0E161E0B3C136D5B1 /* KingfisherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD8C62BA1C60140D72ECD2698046F3 /* KingfisherManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		EA7EE016B399937572409869293397AF /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A893CCE8D4AF2122D7C08066EFFE6A /* ImageDownloader.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F140FDF3DCC9E2AA4BAEE33E78BDB070 /* FormatIndicatedCacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E70E6215B10F2D66134172C4EBE083 /* FormatIndicatedCacheSerializer.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -298,6 +299,7 @@
 		E2CC23170C81275CC0788D9A59D75118 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Image/Filter.swift; sourceTree = "<group>"; };
 		E45D272462ACB620525FF6ADD35F96B6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E690BB39CFDFF5D7A7A48C1F870C51E1 /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/General/Kingfisher.swift; sourceTree = "<group>"; };
+		E94ADAB821E4EB9D009B1A2C /* UIProgressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIProgressButton.swift; path = Pod/Classes/UIProgressButton.swift; sourceTree = "<group>"; };
 		EB1816DFE6D964BB02EF45027FB1829F /* SessionDataTask.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDataTask.swift; path = Sources/Networking/SessionDataTask.swift; sourceTree = "<group>"; };
 		EB39428FCCC2F9B2C39842082ECFC032 /* Pods-CollieGallery_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CollieGallery_Example-frameworks.sh"; sourceTree = "<group>"; };
 		F0E754591D80DC24242A08157530DD86 /* Kingfisher.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.xcconfig; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				1BF75AF6AD8CE0D653EE3CFDC49D9307 /* CollieGalleryZoomTransition.swift */,
 				612B26F9DA489BA5B0D2A7B7FABDF970 /* UCZProgressView.h */,
 				BB278A063CB224BB29D22FFFB0E2DDF0 /* UCZProgressView.m */,
+				E94ADAB821E4EB9D009B1A2C /* UIProgressButton.swift */,
 				16D60A81BE58AFD54C7F54C694F5C0AF /* Pod */,
 				92D6B6D4294241ACFA1BA48D648C63EA /* Support Files */,
 			);
@@ -942,6 +945,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94ADAB921E4EB9D009B1A2C /* UIProgressButton.swift in Sources */,
 				7ECEFD55ADD03B5CD65F901DCA5CCCF5 /* CollieGallery-dummy.m in Sources */,
 				124A261D87433F8C1D0C8B1EA32EE0FC /* CollieGallery.swift in Sources */,
 				64299FE467B30115CEB042FF24F75ECD /* CollieGalleryAppearance.swift in Sources */,
