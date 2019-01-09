@@ -14,6 +14,7 @@ private let progressAnimationKey = "progressAnimation"
 public class UIProgressButton: UIButton {
     public enum Status: Int {
         case normal
+        case light
         case waiting
         case progress
         case pause
@@ -46,7 +47,7 @@ public class UIProgressButton: UIButton {
     }
     
     @IBInspectable public var showsText:Bool = true
-    @IBInspectable public var lineWidth: CGFloat = 1.0
+    @IBInspectable public var lineWidth: CGFloat = 3.0
     @IBInspectable public var highlightColor: UIColor = UIColor(displayP3Red: 251/255.0, green: 61/255.0, blue: 70/255.0, alpha: 1)
     @IBInspectable public var highlightTextColor: UIColor = UIColor.white
     
@@ -112,6 +113,15 @@ public class UIProgressButton: UIButton {
                     self.progressView.isHidden = true;
                     self.setTitleColor(UIColor.white, for: .normal)
                     self.titleLabel?.font = UIFont.systemFont(ofSize: 18);
+                }else if self.status == .light {
+                    path = self.borderPath
+                    self.borderLayer.fillColor = UIColor.clear.cgColor
+                    self.centerLayer.isHidden = false
+                    self.borderLayer.isHidden = false
+                    self.centerLayer.lineWidth = self.lineWidth
+                    self.backgroundColor = UIColor.clear
+                    self.progressView.isHidden = true;
+                    self.titleLabel?.isHidden = true
                 }
                 let animation = CABasicAnimation(keyPath: "path")
                 animation.delegate = self
@@ -150,7 +160,9 @@ public class UIProgressButton: UIButton {
         let layer = CAShapeLayer()
         layer.fillColor = UIColor.clear.cgColor
         layer.strokeColor = tintColor.cgColor
-        layer.lineWidth = 1.5
+        layer.lineWidth = 3
+        layer.lineCap = CAShapeLayerLineCap.round
+        layer.lineJoin = CAShapeLayerLineJoin.round
         layer.strokeStart = 0
         layer.strokeEnd = 1
         return layer
@@ -180,6 +192,23 @@ public class UIProgressButton: UIButton {
         
         path.move(to: CGPoint(x: center.x + pauseIntervalWidth/2, y: center.y + pauseLineWidth/2))
         path.addLine(to: CGPoint(x: center.x + pauseIntervalWidth/2, y: center.y - pauseLineWidth/2))
+        return path
+    }
+    
+    private var downloadPath: UIBezierPath? {
+        if (bounds.width == 0 || bounds.height == 0) {
+            return nil;
+        }
+        let center = CGPoint(x: bounds.width/2, y: bounds.height/2)
+        let width = bounds.width
+        let height = bounds.height
+        let path = UIBezierPath()
+        path.lineWidth = lineWidth*2
+        path.move(to: CGPoint(x: center.x, y: center.y - height/5))
+        path.addLine(to: CGPoint(x: center.x, y: center.y + height/5))
+        path.addLine(to: CGPoint(x: center.x - width/6, y: center.y + 2))
+        path.move(to: CGPoint(x: center.x, y: center.y + height/5))
+        path.addLine(to: CGPoint(x: center.x + width/6, y: center.y + 2))
         return path
     }
     
@@ -351,6 +380,13 @@ public class UIProgressButton: UIButton {
             self.backgroundColor = UIColor.clear
         }else if status == .dark {
             titleLabel?.isHidden = false
+        }else if status == .light {
+            self.centerLayer.path = self.downloadPath?.cgPath
+            self.borderLayer.path = self.borderPath?.cgPath
+            self.borderLayer.fillColor = UIColor.clear.cgColor
+            self.centerLayer.isHidden = false;
+            self.titleLabel?.isHidden = true;
+            self.backgroundColor = UIColor.clear
         }
     }
     
@@ -409,6 +445,12 @@ extension UIProgressButton: CAAnimationDelegate {
                 self.centerLayer.isHidden = false
                 self.borderLayer.isHidden = false
                 centerLayerPath = self.continuePath
+            }else if status == .light {
+                self.borderLayer.path = self.borderPath?.cgPath
+                self.indeterminate = false
+                self.centerLayer.isHidden = false
+                self.borderLayer.isHidden = false
+                centerLayerPath = self.downloadPath
             }
             self.centerLayer.path = centerLayerPath?.cgPath
         }

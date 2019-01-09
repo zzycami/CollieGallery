@@ -1,8 +1,6 @@
 PODS:
-  - CollieGallery (0.6.1):
-    - FontAwesome.swift
+  - CollieGallery (0.6.2):
     - Kingfisher
-  - FontAwesome.swift (1.4.8)
   - Kingfisher (5.0.1)
 
 DEPENDENCIES:
@@ -10,7 +8,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - FontAwesome.swift
     - Kingfisher
 
 EXTERNAL SOURCES:
@@ -18,8 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CollieGallery: e58819a6df48598d04c0572f947d5fa13f11dc93
-  FontAwesome.swift: fb8637bffb9a588c7e8c753c084565b27b20a39d
+  CollieGallery: d2a332ddc43cf04162bb462c68b426af52e19211
   Kingfisher: 4f771421b9208185217550528a06fd48756cb7c2
 
 PODFILE CHECKSUM: 3d90a9cc8f6a4045ae8531c972459ec22fbc95b7

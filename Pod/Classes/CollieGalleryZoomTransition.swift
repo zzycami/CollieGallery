@@ -70,6 +70,7 @@ open class CollieGalleryZoomTransition: CollieGalleryTransitionProtocol {
         
         presentedController.closeButton.center.x -= self.offStage
         presentedController.actionButton?.center.x += self.offStage
+        presentedController.largeImageButton?.center.x -= self.offStage
         presentedController.progressTrackView?.center.y += self.offStage
         presentedController.captionView.center.y += self.offStage
         
@@ -84,6 +85,7 @@ open class CollieGalleryZoomTransition: CollieGalleryTransitionProtocol {
             presentedController.view.backgroundColor = presentedController.view.backgroundColor?.withAlphaComponent(1.0)
             presentedController.closeButton.center.x += self.offStage
             presentedController.actionButton?.center.x -= self.offStage
+            presentedController.largeImageButton?.center.x += self.offStage
             presentedController.progressTrackView?.center.y -= self.offStage
             presentedController.captionView.center.y -= self.offStage
             presentedController.displayedImageView.transform = CGAffineTransform.identity
@@ -107,6 +109,7 @@ open class CollieGalleryZoomTransition: CollieGalleryTransitionProtocol {
             presentingController.view.backgroundColor = presentingController.view.backgroundColor?.withAlphaComponent(0.0)
             presentingController.closeButton.center.x -= self.offStage
             presentingController.actionButton?.center.x += self.offStage
+            presentingController.largeImageButton?.center.x -= self.offStage
             presentingController.progressTrackView?.center.y += self.offStage
             presentingController.captionView.center.y += self.offStage
             

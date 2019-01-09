@@ -22,7 +22,6 @@
 //  THE SOFTWARE.
 
 import UIKit
-import FontAwesome_swift
 
 /// Class used to display the gallery
 open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryViewDelegate {
@@ -77,7 +76,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     open var actionButton: UIButton?
     
     /// The open big image button
-    open var largeImageButton: UIButton?
+    open var largeImageButton: UIProgressButton?
     
     /// The view used to show the progress
     open var progressTrackView: UIView?
@@ -329,19 +328,15 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         
         let avaiableSize = getInitialAvaiableSize()
         let largeImageFrame = getLargeImageButtonFrame(avaiableSize)
-        let largeImageButton = UIButton(frame: largeImageFrame)
-//        largeImageButton.setTitle(NSLocalizedString("Load large Image", comment: ""), for: UIControlState.normal)
-        largeImageButton.backgroundColor = UIColor.white
-        largeImageButton.setImage(UIImage.fontAwesomeIcon(name: FontAwesome.arrowCircleDown, style: FontAwesomeStyle.solid, textColor: UIColor.black, size: CGSize(width: 24, height: 24)), for: UIControl.State.normal)
-        largeImageButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
-        largeImageButton.clipsToBounds = true
-        largeImageButton.layer.cornerRadius = 20
+        let largeImageButton = UIProgressButton(frame: largeImageFrame)
+        largeImageButton.tintColor = UIColor.white
         largeImageButton.addTarget(self, action: #selector(CollieGallery.largeButtonTouched(_:)), for: UIControl.Event.touchUpInside)
         var shouldBeHidden = false
         if self.largeImageButton != nil {
             shouldBeHidden = self.actionButton!.isHidden
         }
         largeImageButton.isHidden = shouldBeHidden
+        largeImageButton.status = .light
         self.largeImageButton = largeImageButton
         self.view.addSubview(largeImageButton)
     }
