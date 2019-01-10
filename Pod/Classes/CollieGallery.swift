@@ -638,7 +638,9 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         let page = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
         
         if page != currentPageIndex {
-            delegate?.gallery?(self, indexChangedTo: page)
+            let picture = self.pictures[page]
+            let pictureView = self.pictureViews[page];
+            delegate?.gallery?(self, indexChangedTo: page, picture: picture, pictureViews: pictureView)
         }
         
         currentPageIndex = page

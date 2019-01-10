@@ -12,7 +12,7 @@ import UIKit
 @objc public protocol CollieGalleryDelegate: class {
     
     /// Called when the gallery index changes
-    @objc optional func gallery(_ gallery: CollieGallery, indexChangedTo index: Int)
+    @objc optional func gallery(_ gallery: CollieGallery, indexChangedTo index: Int, picture: CollieGalleryPicture, pictureViews: CollieGalleryView)
     
     @objc optional func galleryDidDismiss(_ gallery: CollieGallery)
     

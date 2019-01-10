@@ -23,7 +23,7 @@ public class UIProgressButton: UIButton {
     }
     
     // MARK: public property
-    @IBInspectable public var progressLineWidth: CGFloat = 1.5
+    @IBInspectable public var progressLineWidth: CGFloat = 3
     
     @IBInspectable public var indeterminate:Bool = false {
         didSet {
@@ -47,7 +47,7 @@ public class UIProgressButton: UIButton {
     }
     @IBInspectable public var textColor: UIColor = UIColor.white
     @IBInspectable public var showsText:Bool = true
-    @IBInspectable public var lineWidth: CGFloat = 3.0
+    @IBInspectable public var lineWidth: CGFloat = 2.0
     @IBInspectable public var highlightColor: UIColor = UIColor(displayP3Red: 251/255.0, green: 61/255.0, blue: 70/255.0, alpha: 1)
     @IBInspectable public var highlightTextColor: UIColor = UIColor.white
     
@@ -200,14 +200,13 @@ public class UIProgressButton: UIButton {
             return nil;
         }
         let center = CGPoint(x: bounds.width/2, y: bounds.height/2)
-        let width = bounds.width
-        let height = bounds.height
+        let width = min(bounds.width, bounds.height)
         let path = UIBezierPath()
         path.lineWidth = lineWidth*2
-        path.move(to: CGPoint(x: center.x, y: center.y - height/5))
-        path.addLine(to: CGPoint(x: center.x, y: center.y + height/5))
+        path.move(to: CGPoint(x: center.x, y: center.y - width/5))
+        path.addLine(to: CGPoint(x: center.x, y: center.y + width/5))
         path.addLine(to: CGPoint(x: center.x - width/6, y: center.y + 2))
-        path.move(to: CGPoint(x: center.x, y: center.y + height/5))
+        path.move(to: CGPoint(x: center.x, y: center.y + width/5))
         path.addLine(to: CGPoint(x: center.x + width/6, y: center.y + 2))
         return path
     }
