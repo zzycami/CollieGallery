@@ -130,6 +130,9 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     open override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        let picture = self.pictures[currentPageIndex]
+        let galleryView = self.pictureViews[currentPageIndex]
+        delegate?.galleryViewDidLoad?(self, picture: picture, pictureViews: galleryView)
     }
     
     open override func viewWillAppear(_ animated: Bool) {
@@ -210,7 +213,6 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         }
         
         loadImagesNextToIndex(currentPageIndex)
-        
     }
     
     fileprivate func setupScrollView() {
@@ -539,7 +541,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     }
     
     fileprivate func getLargeImageButtonFrame(_ avaiableSize: CGSize) -> CGRect {
-        return CGRect(x: 30, y: avaiableSize.height - 80, width: 80, height: 40)
+        return CGRect(x: 30, y: avaiableSize.height - 56, width: 56, height: 28)
     }
     
     fileprivate func getCustomButtonFrame(_ avaiableSize: CGSize, forIndex index: Int) -> CGRect {
