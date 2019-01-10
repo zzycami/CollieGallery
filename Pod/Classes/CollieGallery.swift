@@ -132,7 +132,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         setupView()
         let picture = self.pictures[currentPageIndex]
         let galleryView = self.pictureViews[currentPageIndex]
-        delegate?.galleryViewDidLoad?(self, picture: picture, pictureViews: galleryView)
+        delegate?.galleryViewDidLoad?(self, picture: picture, imageView: galleryView.imageView)
     }
     
     open override func viewWillAppear(_ animated: Bool) {
@@ -600,7 +600,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         //self.pictureViews[currentPageIndex].loadLargeImage()
         let picture = self.pictures[currentPageIndex]
         let galleryView = self.pictureViews[currentPageIndex]
-        delegate?.galleryStartDownload?(self, picture: picture, pictureViews: galleryView, downloadButton: sender)
+        delegate?.galleryStartDownload?(self, picture: picture, imageView: galleryView.imageView, downloadButton: sender)
     }
     
     internal func showShareActivity() {
@@ -640,7 +640,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         if page != currentPageIndex {
             let picture = self.pictures[page]
             let pictureView = self.pictureViews[page];
-            delegate?.gallery?(self, indexChangedTo: page, picture: picture, pictureViews: pictureView)
+            delegate?.gallery?(self, indexChangedTo: page, picture: picture, imageView: pictureView.imageView)
         }
         
         currentPageIndex = page

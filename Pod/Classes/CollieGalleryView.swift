@@ -24,14 +24,14 @@
 import UIKit
 import Kingfisher
 
-public class CollieGalleryView: UIView, UIScrollViewDelegate {
+internal class CollieGalleryView: UIView, UIScrollViewDelegate {
     
     // MARK: - Internal properties
     var delegate: CollieGalleryViewDelegate?
-    public var picture: CollieGalleryPicture!
-    public var scrollView: UIScrollView!
-    public var imageView: UIImageView!
-    public var activityIndicator: UCZProgressView!
+    var picture: CollieGalleryPicture!
+    var scrollView: UIScrollView!
+    var imageView: UIImageView!
+    var activityIndicator: UCZProgressView!
     var isZoomed: Bool {
         get {
             return scrollView.zoomScale > scrollView.minimumZoomScale
@@ -304,7 +304,7 @@ public class CollieGalleryView: UIView, UIScrollViewDelegate {
 
     
     // MARK: - UIView methods
-    override public func layoutSubviews() {
+    override func layoutSubviews() {
         scrollView.frame = scrollFrame
         scrollView.contentSize = scrollView.frame.size
         scrollView.zoomScale = scrollView.minimumZoomScale
