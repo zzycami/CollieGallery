@@ -16,6 +16,6 @@ import UIKit
     
     @objc optional func galleryDidDismiss(_ gallery: CollieGallery)
     
-    @objc optional func gallery(_ gallery: CollieGallery, didStartDownloadPicture picture: CollieGalleryPicture, pictureViews: CollieGalleryView, downloadButton: UIProgressButton)
+    @objc optional func galleryStartDownload(_ gallery: CollieGallery, picture: CollieGalleryPicture, pictureViews: CollieGalleryView, downloadButton: UIProgressButton)
     
 }

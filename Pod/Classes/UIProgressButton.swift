@@ -45,7 +45,7 @@ public class UIProgressButton: UIButton {
             }
         }
     }
-    
+    @IBInspectable public var textColor: UIColor = UIColor.white
     @IBInspectable public var showsText:Bool = true
     @IBInspectable public var lineWidth: CGFloat = 3.0
     @IBInspectable public var highlightColor: UIColor = UIColor(displayP3Red: 251/255.0, green: 61/255.0, blue: 70/255.0, alpha: 1)
@@ -86,7 +86,7 @@ public class UIProgressButton: UIButton {
                     self.borderLayer.isHidden = false
                     self.borderLayer.fillColor = self.tintColor.cgColor
                     self.progressView.isHidden = true
-                    self.setTitleColor(UIColor.white, for: .normal)
+                    self.setTitleColor(self.textColor, for: .normal)
                 }else if self.status == .progress || self.status == .waiting {
                     path = self.borderPath
                     self.borderLayer.strokeColor = self.tintColor.cgColor
@@ -111,7 +111,7 @@ public class UIProgressButton: UIButton {
                     self.layer.cornerRadius = 5;
                     self.titleLabel?.isHidden = false;
                     self.progressView.isHidden = true;
-                    self.setTitleColor(UIColor.white, for: .normal)
+                    self.setTitleColor(self.textColor, for: .normal)
                     self.titleLabel?.font = UIFont.systemFont(ofSize: 18);
                 }else if self.status == .light {
                     path = self.borderPath
