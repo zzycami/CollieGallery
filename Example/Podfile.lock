@@ -1,7 +1,7 @@
 PODS:
-  - CollieGallery (0.6.4):
+  - CollieGallery (0.6.6):
     - Kingfisher
-  - Kingfisher (5.0.1)
+  - Kingfisher (5.4.0)
 
 DEPENDENCIES:
   - CollieGallery (from `../`)
@@ -15,8 +15,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CollieGallery: da8343500a6225282663593a1decc16d6792a7b0
-  Kingfisher: 4f771421b9208185217550528a06fd48756cb7c2
+  CollieGallery: 7d58dfb94597c78df0bba903f158cdae73fda829
+  Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
 
 PODFILE CHECKSUM: 3d90a9cc8f6a4045ae8531c972459ec22fbc95b7
 
